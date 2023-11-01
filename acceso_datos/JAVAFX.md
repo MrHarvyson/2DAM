@@ -1,7 +1,12 @@
 
 # JAVAFX
 
-Como ya hemos visto, la aplicación javafx más simple está formada por un archivo main que será el que inicie la aplicación y cargue la primera ventana, un archivo fxml (diseño visual de la pantalla) y su controlador. Por cada pantalla nueva que creemos tendremos un FXML y un CONTROLLER.
+- [JAVAFX](#javafx)
+  - [Análisis del Main](#análisis-del-main)
+  - [Análisis del FXML](#análisis-del-fxml)
+- [Análisis del Controlador](#análisis-del-controlador)
+
+Como ya hemos visto, la aplicación javafx más simple está formada por un archivo main que será el que inicie la aplicación y cargue la primera ventana, un archivo fxml (diseño ventana) y su controlador (lógica). Por cada ventana nueva que creemos tendremos un FXML y un CONTROLLER.
 
 ## Análisis del Main
 Este archivo iniciará nuestra aplicación y será encargada de cargar nuestra primera ventana con el FXMLLoader.
@@ -73,7 +78,38 @@ public class HelloApplication extends Application {
 
 En la etiqueta de VBox encontraremos el vinculo entre el FXML y el controlador `<VBox ... fx:controller="com.example.inicio_javafx.HelloController">`
 
-> IMPORTANTE: Si se cambia el nombre del controlador hay asegurarse que esta el `fx:controller` correcto.
+> IMPORTANTE: Si se cambia el nombre del controlador hay que asegurarse que el `fx:controller` es el correcto.
+
+Para relacionar las "etiquetas" como puede ser en el ejemplo `Label`, `TextField` entre otras con el controlador debemos identificarlas con un id: `fx:id="..."`.
+
+En cuanto a los botones vemos que dentro de la etiqueta tendremos el atributo `onAction="#nombre_del_metodo"` que servirá de conector con un método que se creará en el controlador.
+
+# Análisis del Controlador
+
+```java
+public class HelloController {
+    @FXML
+    public TextField idNombre;
+    @FXML
+    public PasswordField idContrasena;
+    @FXML
+    public Label respuesta;
+
+    @FXML
+    public void entrar() {
+
+        String nombre = idNombre.getText();
+        String contrasena = idContrasena.getText();
+
+        respuesta.setText(nombre + " " + contrasena);
+    }
+
+}
+```
+
+En este ejemplo podemos ver como en primer lugar declaramos las variables que creamos en el FXML.
+
+Seguidamente podemos ver que tenemos un método (entrar) que se ejecutará lo que contiene el método una vez pulsemos el botón.
 
 
 
