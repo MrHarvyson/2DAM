@@ -7,7 +7,9 @@
   - [Análisis del Controlador](#análisis-del-controlador)
   - [Crear ventana](#crear-ventana)
 
-Como ya hemos visto, la aplicación javafx más simple está formada por un archivo main que será el que inicie la aplicación y cargue la primera ventana, un archivo fxml (diseño ventana) y su controlador (lógica). Por cada ventana nueva que creemos tendremos un FXML y un CONTROLLER.
+Como ya hemos visto, la aplicación javafx más simple está formada por un archivo main que será el que inicie la 
+aplicación y cargue la primera ventana, un archivo fxml (diseño ventana) y su controlador (lógica). Por cada ventana 
+nueva que creemos tendremos un FXML y un CONTROLLER.
 
 ---
 
@@ -15,7 +17,8 @@ Como ya hemos visto, la aplicación javafx más simple está formada por un arch
 Este archivo iniciará nuestra aplicación y será encargada de cargar nuestra primera ventana con el FXMLLoader.
 
 > [!NOTE]
-> Nosotros siempre llamamos al archivo fxml (dependiendo de la ventana que queramos abrir) y el propio archivo fxml será encargado de buscar su controlador (se verá más adelante).
+> Nosotros siempre llamamos al archivo fxml (dependiendo de la ventana que queramos abrir) y el propio archivo 
+> fxml será encargado de buscar su controlador (se verá más adelante).
 
 ```java
 
@@ -60,7 +63,8 @@ public class HelloApplication extends Application {
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="148.0" prefWidth="184.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inicio_javafx.HelloController">
+<VBox alignment="CENTER" prefHeight="148.0" prefWidth="184.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" 
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inicio_javafx.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -82,14 +86,16 @@ public class HelloApplication extends Application {
 
 ```
 
-En la etiqueta de VBox encontraremos el vinculo entre el FXML y el controlador `<VBox ... fx:controller="com.example.inicio_javafx.HelloController">`
+En la etiqueta de VBox encontraremos el vínculo entre el FXML y el controlador `<VBox ... fx:controller="com.example.inicio_javafx.HelloController">`
 
 > [!IMPORTANT]
 > Si se cambia el nombre del controlador hay que asegurarse que el `fx:controller` es el correcto.
 
-Para relacionar las "etiquetas" como puede ser en el ejemplo `Label`, `TextField` entre otras con el controlador debemos identificarlas con un id: `fx:id="..."`.
+Para relacionar las "etiquetas" como puede ser en el ejemplo `Label`, `TextField` entre otras con el controlador 
+debemos identificarlas con un id: `fx:id="..."`.
 
-En cuanto a los botones vemos que dentro de la etiqueta tendremos el atributo `onAction="#nombre_del_metodo"` que servirá de conector con un método que se creará en el controlador.
+En cuanto a los botones vemos que dentro de la etiqueta tendremos el atributo `onAction="#nombre_del_metodo"` que 
+servirá de conector con un método que se creará en el controlador.
 
 ---
 
@@ -116,11 +122,13 @@ public class HelloController {
 }
 ```
 
-Este es el archivo que está relacionado con su FXML y en el que pondremos la lógica. En este ejemplo podemos ver como en primer lugar declaramos las variables que creamos en el FXML.
+Este es el archivo que está relacionado con su FXML y en el que pondremos la lógica. En este ejemplo podemos ver como 
+en primer lugar declaramos las variables que creamos en el FXML.
 
 Seguidamente podemos ver que tenemos un método (entrar) que se ejecutará lo que contiene el método una vez pulsemos el botón. 
 
-En este caso al ejecutar el método 'entrar' estamos obteniendo en dos variable diferente los valores tando del `TextField idNombre` y del `PasswordField idContrasena` mediante un `.getText`.
+En este caso al ejecutar el método 'entrar' estamos obteniendo en dos variable diferente los valores tando 
+del `TextField idNombre` y del `PasswordField idContrasena` mediante un `.getText`.
 
 Por otra parte una vez que hemos obtenido ambos valores los imprimiremos en `Label respuesta` con un `.setText`.
 
@@ -172,7 +180,9 @@ public class HelloController {
   }
 }
 ```
-Analizaremos este código por partes para ver como podemos
+Analizaremos este código por partes para ver como podemos abrir una nueva ventana y que se cierre la que tenemos abierta.
+
+
 
 
 
