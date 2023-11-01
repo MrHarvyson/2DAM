@@ -14,7 +14,8 @@ Como ya hemos visto, la aplicación javafx más simple está formada por un arch
 ## Análisis del Main
 Este archivo iniciará nuestra aplicación y será encargada de cargar nuestra primera ventana con el FXMLLoader.
 
-> NOTA: Nosotros siempre llamamos al archivo fxml (dependiendo de la ventana que queramos abrir) y el propio archivo fxml será encargado de buscar su controlador (se verá más adelante).
+> [!NOTE]
+> Nosotros siempre llamamos al archivo fxml (dependiendo de la ventana que queramos abrir) y el propio archivo fxml será encargado de buscar su controlador (se verá más adelante).
 
 ```java
 
@@ -84,7 +85,7 @@ public class HelloApplication extends Application {
 En la etiqueta de VBox encontraremos el vinculo entre el FXML y el controlador `<VBox ... fx:controller="com.example.inicio_javafx.HelloController">`
 
 > [!IMPORTANT]
-> IMPORTANTE: Si se cambia el nombre del controlador hay que asegurarse que el `fx:controller` es el correcto.
+> Si se cambia el nombre del controlador hay que asegurarse que el `fx:controller` es el correcto.
 
 Para relacionar las "etiquetas" como puede ser en el ejemplo `Label`, `TextField` entre otras con el controlador debemos identificarlas con un id: `fx:id="..."`.
 
@@ -128,41 +129,50 @@ Por otra parte una vez que hemos obtenido ambos valores los imprimiremos en `Lab
 ## Crear ventana
 
 ```java
-@FXML
-    public void entrar(ActionEvent actionEvent) {
+public class HelloController {
+  @FXML
+  public TextField idNombre;
+  @FXML
+  public PasswordField idContrasena;
+  @FXML
+  public Label respuesta;
 
-        String nombre = idNombre.getText();
-        String contrasena = idContrasena.getText();
+  @FXML
+  public void entrar(ActionEvent actionEvent) {
 
-        respuesta.setText(nombre + " " + contrasena);
-        cambiarVentana(actionEvent);
+    String nombre = idNombre.getText();
+    String contrasena = idContrasena.getText();
 
+    respuesta.setText(nombre + " " + contrasena);
+    cambiarVentana(actionEvent);
+
+  }
+
+  public void cambiarVentana(ActionEvent event){
+    try {
+      // es una clase en JavaFX que carga un objeto jerárquico a partir de un documento XML (FXML).
+      // obtiene la ubicación del archivo FXML
+      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ejemplo.fxml"));
+      // qué elementos de la interfaz de usuario deben aparecer en la ventana y cómo deben organizarse.
+      Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+      //  creando una nueva ventana que puede contener una Scene
+      Stage stage = new Stage();
+      stage.show();
+
+      // cerrar ventana
+      // obtiene la fuente del evento
+      Node source = (Node) event.getSource();
+      // obtener la ventana actual
+      stage = (Stage) source.getScene().getWindow();
+      stage.close();
+
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
-
-    public void cambiarVentana(ActionEvent event){
-        try {
-            // es una clase en JavaFX que carga un objeto jerárquico a partir de un documento XML (FXML).
-            // obtiene la ubicación del archivo FXML
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ejemplo.fxml"));
-            // qué elementos de la interfaz de usuario deben aparecer en la ventana y cómo deben organizarse.
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-            //  creando una nueva ventana que puede contener una Scene
-            Stage stage = new Stage();
-            stage.show();
-
-            // cerrar ventana
-            // obtiene la fuente del evento
-            Node source = (Node) event.getSource();
-            // obtener la ventana actual
-            stage = (Stage) source.getScene().getWindow();
-            stage.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+  }
+}
 ```
-
+Analizaremos este código por partes para ver como podemos
 
 
 
