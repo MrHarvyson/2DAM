@@ -1,8 +1,3 @@
----
-title: JAVAFX
-created: '2023-10-31T14:41:32.553Z'
-modified: '2023-11-01T01:30:59.124Z'
----
 
 # JAVAFX
 
