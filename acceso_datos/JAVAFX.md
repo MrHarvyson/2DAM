@@ -83,6 +83,7 @@ public class HelloApplication extends Application {
 
 En la etiqueta de VBox encontraremos el vinculo entre el FXML y el controlador `<VBox ... fx:controller="com.example.inicio_javafx.HelloController">`
 
+> [!IMPORTANT]
 > IMPORTANTE: Si se cambia el nombre del controlador hay que asegurarse que el `fx:controller` es el correcto.
 
 Para relacionar las "etiquetas" como puede ser en el ejemplo `Label`, `TextField` entre otras con el controlador debemos identificarlas con un id: `fx:id="..."`.
@@ -161,9 +162,6 @@ Por otra parte una vez que hemos obtenido ambos valores los imprimiremos en `Lab
         }
     }
 ```
-
-
-
 
 
 
